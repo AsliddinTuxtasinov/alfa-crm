@@ -8,27 +8,22 @@ if not os.path.exists('.env'):
     print('.env fayli topilmadi!')
     print('.env.example faylidan nusxa ko\'chirib shablonni o\'zizga moslang.')
     exit(1)
-    
-    
+
 env.read_env()
 
 API_TOKEN = env.str('API_TOKEN')
 SECRET_KEY = env.str('SECRET_KEY')
 WEB_DOMAIN = env.str('WEB_DOMAIN')
 DEBUG = env.bool('DEBUG')
-    
+
 WEBHOOK_PATH = 'tgbot/' + hashlib.md5(API_TOKEN.encode()).hexdigest()
 WEBHOOK_URL = f"{WEB_DOMAIN}/{WEBHOOK_PATH}"
-
-
 
 # ____________________________________________________
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -39,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # local apps
     'tgbot',
 ]
 
@@ -72,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -82,7 +78,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -102,7 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -113,7 +107,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

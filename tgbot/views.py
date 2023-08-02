@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request: HttpRequest):
     return HttpResponse('Hello world')
 
+
 @csrf_exempt
 def telegram(request: HttpRequest):
     # if request.method == 'post':
